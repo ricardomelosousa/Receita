@@ -22,7 +22,7 @@ tecnologia ou afins no nosso projeto.
  <br>> Avaliar a implementação de GraphQL. 
  <br>> Incluir log serilog (analisar o melhor sink para o nosso cenário).
  <br>> Ao final migrar a arquitetura para um formato distribuido (microserviços), assim implementar.
- <br> Incluir api Gateway (Ocelot ou Kong Gateway).
+ <br>> Incluir api Gateway (Ocelot ou Kong Gateway).
  <br>> Avaliar a implementação de CQRS após distribuido.
  <br>> Ao processo de migração implementar a observabilidade (Tracing(Elastic apm), Logging(Elastic) e metricas(Kibana ou prometheus etc)).
 
