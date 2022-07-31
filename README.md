@@ -6,6 +6,7 @@ tecnologia ou afins no nosso projeto.
 
 <br> > .Net 5 (Será feito update para .net 7 mais a frente).
 <br> > Web Api como nosso serviço de back end.
+<br> > Web MVC com javascript e bootstrap no portal.
 <br> > Test (Até o momento está cobrindo o básico da web api, será adicionado o test de unidade da api nos próximos passos).
 <br> > FluentValidation para validação básica de dados. 
 <br> > Middleware básico para autenticação com jwt.
