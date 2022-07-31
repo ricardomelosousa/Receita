@@ -1,0 +1,67 @@
+﻿model
+@{
+    Layout = null;
+}
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
+    ViewBag.Title = "Bem vindo ao Recipes Web";
+}
+
+
+<h2>@ViewBag.Title.</h2>
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Recipes</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado" aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" asp-page="/Home/Index">Home <span class="sr-only"></span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" asp-page="/Recipe/Index">Recipes</a>
+      </li>      
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#">Insert Recipe</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar" aria-label="Pesquisar">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Pesquisar</button>
+    </form>
+     <form class="form-inline my-2 my-lg-0">
+      <a asp-area="" asp-page="/Login/Login" class="btn btn-primary">Acesse Area Logada</a>
+    </form>
+  </div>
+</nav>
+
+<div class="row">
+    <div class="col-sm-6">
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="~/assets/image/Recipes.jpg" alt="Recipes">
+            <div class="card-body">
+                <h5 class="card-title">Recipes</h5>
+                <p class="card-text">Acesse a area de Recipes</p>
+                <a asp-area="" asp-page="/Recipe/Index" class="btn btn-primary">Visitar</a>
+            </div>
+        </div>
+    </div>
+     <div class="col-sm-6">
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="~/assets/image/Recipes.jpg" alt="Recipes">
+            <div class="card-body">
+                <h5 class="card-title">Categorys</h5>
+                <p class="card-text">Acesse a area de Categorys de Recipes</p>
+                <a asp-area="" asp-page="/Category/Index" class="btn btn-primary">Visitar</a>
+            </div>
+
+        </div>
+
+    </div>
+</div>

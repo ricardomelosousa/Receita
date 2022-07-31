@@ -1,0 +1,41 @@
+﻿@page
+@model Fiap.Project.Recipes.Web.Views.Recipe.InsertModel
+<form method="post" action="/Recipe/Insert">
+    <label asp-for="Titulo"></label>
+    <input asp-for="Titulo" />
+    <br />
+    <label asp-for="Descricao"></label>
+
+    <input asp-for="Descricao" />
+    <br />
+
+    <br />
+    <label asp-for="Ingredientes"></label>
+
+    <input asp-for="Ingredientes" />
+    <br />
+
+    <br />
+    <label asp-for="Preparo"></label>
+
+    <input asp-for="Preparo" />
+    <br />
+
+    <br />
+    <label asp-for="Imagem"></label>
+
+    <input asp-for="Imagem" />
+    <br />
+
+
+    <br />
+    <label asp-for="Tags"></label>
+
+    <input asp-for="Tags" />
+    <br />
+
+    <input type="submit" value="Salvar" />
+
+    @Html.AntiForgeryToken()
+
+</form>

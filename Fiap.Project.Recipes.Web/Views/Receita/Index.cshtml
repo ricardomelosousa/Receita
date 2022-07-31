@@ -1,0 +1,41 @@
+﻿@page
+@model Fiap.Project.Recipes.Web.Views.Recipe.IndexModel
+@{ Layout = null; }
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <p>
+        <a asp-page="Insert">Criar Novo Registro</a>
+    </p>
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Descrição</th>
+            <th>...</th>
+        </tr>
+        @foreach (var item in Model.Recipes)
+        {
+    <tr>
+        <td>@item.Id</td>
+        <td>@item.Titulo</td>
+        <td>@item.DataInclusao</td>
+        <td>@item.Descricao</td>
+        <td>@item.CategoryRecipe.Descricao</td>
+        <td>@item.Imagem</td>
+        <td>@item.Ingredientes</td>
+        <td>@item.Preparo</td>
+        <td>@item.Tags</td>
+        <td>
+            <a asp-page="Editar" asp-route-id="@item.Id">Alterar Registro</a> |
+            <a asp-page="Delete" asp-route-id="@item.Id">Delete</a>
+        </td>
+    </tr>
+        }
+    </table>
+</body>
+</html>

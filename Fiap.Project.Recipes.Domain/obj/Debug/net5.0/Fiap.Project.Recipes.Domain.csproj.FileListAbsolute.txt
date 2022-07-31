@@ -1,0 +1,12 @@
+C:\Users\ricardo.sousa\Desktop\Receita\Fiap.Project.Recipes.Domain\bin\Debug\net5.0\Fiap.Project.Recipes.Domain.deps.json
+C:\Users\ricardo.sousa\Desktop\Receita\Fiap.Project.Recipes.Domain\bin\Debug\net5.0\Fiap.Project.Recipes.Domain.dll
+C:\Users\ricardo.sousa\Desktop\Receita\Fiap.Project.Recipes.Domain\bin\Debug\net5.0\ref\Fiap.Project.Recipes.Domain.dll
+C:\Users\ricardo.sousa\Desktop\Receita\Fiap.Project.Recipes.Domain\bin\Debug\net5.0\Fiap.Project.Recipes.Domain.pdb
+C:\Users\ricardo.sousa\Desktop\Receita\Fiap.Project.Recipes.Domain\obj\Debug\net5.0\Fiap.Project.Recipes.Domain.csproj.AssemblyReference.cache
+C:\Users\ricardo.sousa\Desktop\Receita\Fiap.Project.Recipes.Domain\obj\Debug\net5.0\Fiap.Project.Recipes.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ricardo.sousa\Desktop\Receita\Fiap.Project.Recipes.Domain\obj\Debug\net5.0\Fiap.Project.Recipes.Domain.AssemblyInfoInputs.cache
+C:\Users\ricardo.sousa\Desktop\Receita\Fiap.Project.Recipes.Domain\obj\Debug\net5.0\Fiap.Project.Recipes.Domain.AssemblyInfo.cs
+C:\Users\ricardo.sousa\Desktop\Receita\Fiap.Project.Recipes.Domain\obj\Debug\net5.0\Fiap.Project.Recipes.Domain.csproj.CoreCompileInputs.cache
+C:\Users\ricardo.sousa\Desktop\Receita\Fiap.Project.Recipes.Domain\obj\Debug\net5.0\Fiap.Project.Recipes.Domain.dll
+C:\Users\ricardo.sousa\Desktop\Receita\Fiap.Project.Recipes.Domain\obj\Debug\net5.0\ref\Fiap.Project.Recipes.Domain.dll
+C:\Users\ricardo.sousa\Desktop\Receita\Fiap.Project.Recipes.Domain\obj\Debug\net5.0\Fiap.Project.Recipes.Domain.pdb

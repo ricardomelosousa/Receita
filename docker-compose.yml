@@ -1,0 +1,14 @@
+version: '3.4'
+
+services:
+  fiap.project.recipes.api:
+    image: ${DOCKER_REGISTRY-}fiapprojectrecipesapi
+    build:
+      context: .
+      dockerfile: Fiap.Project.Recipes.Api/Dockerfile      
+
+  fiap.project.recipes.Web:
+    image: ${DOCKER_REGISTRY-}fiapprojectrecipesweb
+    build:
+      context: .
+      dockerfile: Fiap.Project.Recipes.Web/Dockerfile

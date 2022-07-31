@@ -1,0 +1,21 @@
+﻿@page "{id:int?}"
+@model Fiap.Project.Recipes.Web.Views.Category.EditarModel
+@{ Layout = null; }
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Edit</title>
+</head>
+<body>
+    <form method="post">
+        <label>Descrição:</label>
+        <input type="hidden" asp-for="Categor.Id" />
+        <input type="text" asp-for="Categor.Titulo" />
+        <input type="text" asp-for="Categor.Descricao" />
+        <input type="submit" value="Alterar" />
+    </form>
+    <a asp-page="Index"><< Voltar</a>
+</body>
+</html>
