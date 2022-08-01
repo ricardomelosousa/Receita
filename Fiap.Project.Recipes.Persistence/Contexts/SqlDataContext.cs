@@ -1,8 +1,8 @@
-﻿using Fiap.Project.Recipes.Domain.Models;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using Project.Recipes.Domain.Models;
 using System;
 
-namespace Fiap.Project.Recipes.Persistence.Contexts
+namespace Project.Recipes.Persistence.Contexts
 {
     public class SqlDataContext : DbContext
     {
@@ -18,10 +18,10 @@ namespace Fiap.Project.Recipes.Persistence.Contexts
             modelBuilder.Entity<User>().HasData(new User()
             {
                 Id = 1,
-                Nome = "Administrador",
+                Name = "Administrador",
                 Email = "admin@admin",
                 Login = "admin",
-                Senha = "123456",
+                Password = "123456",
                 Role = "Administrador"
             });
 

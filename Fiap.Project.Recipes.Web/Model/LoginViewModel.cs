@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Fiap.Project.Recipes.Web.Model
+namespace Project.Recipes.Web.Model
 {
     public class LoginViewModel
     {
@@ -11,7 +11,7 @@ namespace Fiap.Project.Recipes.Web.Model
 
         [Required]
         [DataType(DataType.Password)]
-        [Display(Name = "Senha")]
-        public string Senha { get; set; }
+        [Display(Name = "Password")]
+        public string Password { get; set; }
     }
 }

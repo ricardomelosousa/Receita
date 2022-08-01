@@ -1,4 +1,4 @@
-using Fiap.Project.Recipes.Web.Helpers;
+using Project.Recipes.Web.Helpers;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System;
@@ -9,7 +9,7 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace Fiap.Project.Recipes.Web.Views.Category
+namespace Project.Recipes.Web.Views.Category
 {
     public class InsertModel : PageModel
     {      

@@ -1,96 +1,85 @@
-﻿using Fiap.Project.Recipes.Api.Helpers;
-using Fiap.Project.Recipes.Application.Interfaces;
-using Fiap.Project.Recipes.Domain.Models;
-using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace Fiap.Project.Recipes.Api.Controllers
+﻿namespace Project.Recipes.Api.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
     public class RecipesController : ControllerBase
     {
 
-        private readonly IRecipeService _RecipeService;
+        private readonly IRecipeAppService _recipeAppService;
 
-        public RecipesController(IRecipeService service)
+        public RecipesController(IRecipeAppService recipeAppService)
         {
-            _RecipeService = service;
+            _recipeAppService = recipeAppService;
         }
 
         [HttpGet]
         [Route("{id}")]
-        public ActionResult<Recipe> Get(int? id)
+        public async Task<ActionResult<Recipe>> Get(int? id)
         {
             if (id == null)
                 return NotFound();
 
-            var Recipe = _RecipeService.Get(id.Value);
+            var recipe = await _recipeAppService.GetById(id.Value);
 
-            if (Recipe == null)
+            if (recipe == null)
                 return NotFound();
-
-            return Recipe;
+            return recipe;
         }
 
-     
+
         [HttpGet]
-        public ActionResult<IEnumerable<Recipe>> GetAll()
+        public async Task<ActionResult<IEnumerable<Recipe>>> GetAll()
         {
-            return Ok(_RecipeService.GetAll().ToList());
+            return Ok(await _recipeAppService.GetAll());
         }
 
         [HttpGet]
         [Route("PorCategory/{Category}")]
-        public ActionResult<IEnumerable<Recipe>> GetAll(int Category)
+        public async Task<ActionResult<Recipe>> GetAll(int categoriaId)
         {
-            var Recipes = _RecipeService.GetAll(Category).ToList();
+            var recipe = await _recipeAppService.FindBy(a => a.CategoryId == categoriaId, true);
 
-            if (Recipes?.Count > 0)
-                return Ok(Recipes);
+            if (recipe != null)
+                return Ok(recipe);
 
             return NotFound();
         }
 
         [Authorize]
         [HttpPost]
-        public ActionResult<Category> Insert([FromBody] Recipe Recipe)
+        public ActionResult<Category> Insert([FromBody] Recipe recipe)
         {
-            if (Recipe == null)
+            if (recipe == null)
                 return BadRequest();
 
-            _RecipeService.Insert(Recipe);
+            _recipeAppService.Add(recipe);
 
-            return Created($"/api/Recipe/{Recipe.Id}", Recipe);
+            return Created($"/api/Recipe/{recipe.Id}", recipe);
         }
 
         [Authorize]
         [HttpDelete]
         [Route("{id}")]
-        public ActionResult Delete(int id)
+        public async Task<ActionResult> Delete(int id)
         {
-            var Recipe = _RecipeService.Get(id);
+            var recipe = await _recipeAppService.GetById(id);
 
-            if (Recipe == null)
+            if (recipe == null)
                 return NotFound();
 
-            _RecipeService.Delete(id);
+            _recipeAppService.Remove(recipe);
             return NoContent();
         }
 
         [Authorize]
         [HttpPut]
-        public ActionResult<Recipe> Update(Recipe Recipe)
+        public ActionResult<Recipe> Update(Recipe recipe)
         {
             if (ModelState.IsValid)
             {
-                _RecipeService.Update(Recipe);
-                return Ok(Recipe);
+                _recipeAppService.Update(recipe);
+                return Ok(recipe);
             }
-
             return BadRequest(ModelState);
         }
 

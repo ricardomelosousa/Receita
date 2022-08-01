@@ -17,7 +17,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "Fiap.Project.Recipes.Api": {
+    "Project.Recipes.Api": {
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "swagger",

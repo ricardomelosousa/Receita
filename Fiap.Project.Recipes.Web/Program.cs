@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Fiap.Project.Recipes.Web
+namespace Project.Recipes.Web
 {
     public class Program
     {

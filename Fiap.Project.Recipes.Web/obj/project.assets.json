@@ -1,7 +1,7 @@
 {
   "version": 3,
   "targets": {
-    "net5.0": {
+    "net6.0": {
       "Humanizer.Core/2.8.26": {
         "type": "package",
         "compile": {
@@ -2029,47 +2029,31 @@
           "lib/netstandard1.3/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "Fiap.Project.Recipes.Application/1.0.0": {
+      "Project.Recipes.Application/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v5.0",
+        "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
-          "Fiap.Project.Recipes.Domain": "1.0.0",
           "Microsoft.AspNetCore.Http.Abstractions": "2.2.0",
           "Microsoft.EntityFrameworkCore": "5.0.11",
           "Microsoft.Extensions.Configuration.Abstractions": "5.0.0",
+          "Project.Recipes.Domain": "1.0.0",
           "System.IdentityModel.Tokens.Jwt": "6.14.0"
         },
         "compile": {
-          "bin/placeholder/Fiap.Project.Recipes.Application.dll": {}
+          "bin/placeholder/Project.Recipes.Application.dll": {}
         },
         "runtime": {
-          "bin/placeholder/Fiap.Project.Recipes.Application.dll": {}
+          "bin/placeholder/Project.Recipes.Application.dll": {}
         }
       },
-      "Fiap.Project.Recipes.Domain/1.0.0": {
+      "Project.Recipes.Domain/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v5.0",
+        "framework": ".NETCoreApp,Version=v6.0",
         "compile": {
-          "bin/placeholder/Fiap.Project.Recipes.Domain.dll": {}
+          "bin/placeholder/Project.Recipes.Domain.dll": {}
         },
         "runtime": {
-          "bin/placeholder/Fiap.Project.Recipes.Domain.dll": {}
-        }
-      },
-      "Fiap.Project.Recipes.Persistence/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v5.0",
-        "dependencies": {
-          "Fiap.Project.Recipes.Application": "1.0.0",
-          "Fiap.Project.Recipes.Domain": "1.0.0",
-          "Microsoft.EntityFrameworkCore": "5.0.11",
-          "Microsoft.EntityFrameworkCore.SqlServer": "5.0.11"
-        },
-        "compile": {
-          "bin/placeholder/Fiap.Project.Recipes.Persistence.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/Fiap.Project.Recipes.Persistence.dll": {}
+          "bin/placeholder/Project.Recipes.Domain.dll": {}
         }
       }
     }
@@ -7232,30 +7216,25 @@
         "system.xml.xmlserializer.nuspec"
       ]
     },
-    "Fiap.Project.Recipes.Application/1.0.0": {
+    "Project.Recipes.Application/1.0.0": {
       "type": "project",
-      "path": "../Fiap.Project.Recipes.Application/Fiap.Project.Recipes.Application.csproj",
-      "msbuildProject": "../Fiap.Project.Recipes.Application/Fiap.Project.Recipes.Application.csproj"
+      "path": "../Fiap.Project.Recipes.Application/Project.Recipes.Application.csproj",
+      "msbuildProject": "../Fiap.Project.Recipes.Application/Project.Recipes.Application.csproj"
     },
-    "Fiap.Project.Recipes.Domain/1.0.0": {
+    "Project.Recipes.Domain/1.0.0": {
       "type": "project",
-      "path": "../Fiap.Project.Recipes.Domain/Fiap.Project.Recipes.Domain.csproj",
-      "msbuildProject": "../Fiap.Project.Recipes.Domain/Fiap.Project.Recipes.Domain.csproj"
-    },
-    "Fiap.Project.Recipes.Persistence/1.0.0": {
-      "type": "project",
-      "path": "../Fiap.Project.Recipes.Persistence/Fiap.Project.Recipes.Persistence.csproj",
-      "msbuildProject": "../Fiap.Project.Recipes.Persistence/Fiap.Project.Recipes.Persistence.csproj"
+      "path": "../Fiap.Project.Recipes.Domain/Project.Recipes.Domain.csproj",
+      "msbuildProject": "../Fiap.Project.Recipes.Domain/Project.Recipes.Domain.csproj"
     }
   },
   "projectFileDependencyGroups": {
-    "net5.0": [
-      "Fiap.Project.Recipes.Persistence >= 1.0.0",
+    "net6.0": [
       "Microsoft.EntityFrameworkCore >= 5.0.11",
       "Microsoft.EntityFrameworkCore.Design >= 5.0.11",
       "Microsoft.EntityFrameworkCore.SqlServer >= 5.0.11",
       "Microsoft.VisualStudio.Azure.Containers.Tools.Targets >= 1.14.0",
-      "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 5.0.2"
+      "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 5.0.2",
+      "Project.Recipes.Application >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -7265,9 +7244,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ricardo.sousa\\Desktop\\Receita\\Fiap.Project.Recipes.Web\\Fiap.Project.Recipes.Web.csproj",
-      "projectName": "Fiap.Project.Recipes.Web",
-      "projectPath": "C:\\Users\\ricardo.sousa\\Desktop\\Receita\\Fiap.Project.Recipes.Web\\Fiap.Project.Recipes.Web.csproj",
+      "projectUniqueName": "C:\\Users\\ricardo.sousa\\Desktop\\Receita\\Fiap.Project.Recipes.Web\\Project.Recipes.Web.csproj",
+      "projectName": "Project.Recipes.Web",
+      "projectPath": "C:\\Users\\ricardo.sousa\\Desktop\\Receita\\Fiap.Project.Recipes.Web\\Project.Recipes.Web.csproj",
       "packagesPath": "C:\\Users\\ricardo.sousa\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\ricardo.sousa\\Desktop\\Receita\\Fiap.Project.Recipes.Web\\obj\\",
       "projectStyle": "PackageReference",
@@ -7279,7 +7258,7 @@
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
-        "net5.0"
+        "net6.0"
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
@@ -7287,11 +7266,11 @@
         "https://www.p3store.com.br:443/P3NuGet/nuget": {}
       },
       "frameworks": {
-        "net5.0": {
-          "targetAlias": "net5.0",
+        "net6.0": {
+          "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\ricardo.sousa\\Desktop\\Receita\\Fiap.Project.Recipes.Persistence\\Fiap.Project.Recipes.Persistence.csproj": {
-              "projectPath": "C:\\Users\\ricardo.sousa\\Desktop\\Receita\\Fiap.Project.Recipes.Persistence\\Fiap.Project.Recipes.Persistence.csproj"
+            "C:\\Users\\ricardo.sousa\\Desktop\\Receita\\Fiap.Project.Recipes.Application\\Project.Recipes.Application.csproj": {
+              "projectPath": "C:\\Users\\ricardo.sousa\\Desktop\\Receita\\Fiap.Project.Recipes.Application\\Project.Recipes.Application.csproj"
             }
           }
         }
@@ -7303,8 +7282,8 @@
       }
     },
     "frameworks": {
-      "net5.0": {
-        "targetAlias": "net5.0",
+      "net6.0": {
+        "targetAlias": "net6.0",
         "dependencies": {
           "Microsoft.EntityFrameworkCore": {
             "target": "Package",
@@ -7339,12 +7318,6 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.NETCore.App.Host.win-x64",
-            "version": "[5.0.12, 5.0.12]"
-          }
-        ],
         "frameworkReferences": {
           "Microsoft.AspNetCore.App": {
             "privateAssets": "none"

@@ -7,12 +7,12 @@ using System.Security.Claims;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
-using Fiap.Project.Recipes.Web.Helpers;
-using Fiap.Project.Recipes.Web.Model;
+using Project.Recipes.Web.Helpers;
+using Project.Recipes.Web.Model;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace Fiap.Project.Recipes.Web.Views.Recipe
+namespace Project.Recipes.Web.Views.Recipe
 {
     public class DeleteModel : PageModel
     {

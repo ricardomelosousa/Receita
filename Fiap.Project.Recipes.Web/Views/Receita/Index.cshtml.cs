@@ -4,21 +4,15 @@ using System.Linq;
 using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
-using Fiap.Project.Recipes.Web.Model;
+using Project.Recipes.Web.Model;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace Fiap.Project.Recipes.Web.Views.Recipe
+namespace Project.Recipes.Web.Views.Recipe
 {
     public class IndexModel : PageModel
     {
-        public readonly Database database;
-
-        public IndexModel(Database database)
-        {
-            this.database = database;
-        }
-
+       
         public IEnumerable<Domain.Models.Recipe> Recipes { get; private set; }
 
         public async Task OnGetAsync()

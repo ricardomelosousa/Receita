@@ -1,10 +1,10 @@
-using Fiap.Project.Recipes.Application.Interfaces;
-using Fiap.Project.Recipes.Domain.Models;
-using Fiap.Project.Recipes.Persistence.Repositories;
 using Moq;
+using Project.Recipes.Domain.Interface.Repository;
+using Project.Recipes.Domain.Models;
+using Project.Recipes.Persistence.Repositories;
 using Xunit;
 
-namespace Fiap.Project.Recipes.Persistence.Test
+namespace Project.Recipes.Persistence.Test
 {
     public class RecipeRepositoryTest
     {

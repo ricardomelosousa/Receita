@@ -1,4 +1,4 @@
-﻿using Fiap.Project.Recipes.Application.Interfaces;
+﻿using Project.Recipes.Application.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Fiap.Project.Recipes.Application.Middleware
+namespace Project.Recipes.Application.Middleware
 {
     public class JwtMiddleware
     {
@@ -20,7 +20,7 @@ namespace Fiap.Project.Recipes.Application.Middleware
             _next = next;
             _appSettings = appSettings;
         }
-        public async Task Invoke(HttpContext context, IUserService userService)
+        public async Task Invoke(HttpContext context, IUserAppService userService)
         {
             var token = context.Request.Headers["Authorization"].FirstOrDefault()?.Split(" ").Last();
 
@@ -29,7 +29,7 @@ namespace Fiap.Project.Recipes.Application.Middleware
 
             await _next(context);
         }
-        private void attachUserToContext(HttpContext context, IUserService userService, string token)
+        private async void attachUserToContext(HttpContext context, IUserAppService userService, string token)
         {
             try
             {
@@ -48,7 +48,7 @@ namespace Fiap.Project.Recipes.Application.Middleware
 
                 var jwtToken = (JwtSecurityToken)validatedToken;
                 var userId = int.Parse(jwtToken.Claims.First(x => x.Type == "id").Value);
-                context.Items["User"] = userService.Get(userId);
+                context.Items["User"] = await userService.GetById(userId);
             }
             catch
             {

@@ -1,0 +1,13 @@
+﻿global using System;
+global using System.Linq;
+global using System.Threading.Tasks;
+global using Project.Recipes.Application.Interfaces.Base;
+global using Project.Recipes.Domain.Models;
+global using Project.Recipes.Application.Interfaces;
+global using Project.Recipes.Application.Services.Base;
+global using Project.Recipes.Domain.Interface.Services;
+global using Microsoft.Extensions.Configuration;
+global using Microsoft.IdentityModel.Tokens;
+global using System.IdentityModel.Tokens.Jwt;
+global using System.Security.Claims;
+global using System.Text;

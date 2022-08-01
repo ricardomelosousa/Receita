@@ -1,0 +1,8 @@
+C:\Users\ricardo.sousa\Desktop\Receita\Fiap.Project.Recipes.Web\obj\Debug\net5.0\Project.Recipes.Web.csproj.AssemblyReference.cache
+C:\Users\ricardo.sousa\Desktop\Receita\Fiap.Project.Recipes.Web\obj\Debug\net5.0\Project.Recipes.Web.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ricardo.sousa\Desktop\Receita\Fiap.Project.Recipes.Web\obj\Debug\net5.0\Project.Recipes.Web.AssemblyInfoInputs.cache
+C:\Users\ricardo.sousa\Desktop\Receita\Fiap.Project.Recipes.Web\obj\Debug\net5.0\Project.Recipes.Web.AssemblyInfo.cs
+C:\Users\ricardo.sousa\Desktop\Receita\Fiap.Project.Recipes.Web\obj\Debug\net5.0\Project.Recipes.Web.csproj.CoreCompileInputs.cache
+C:\Users\ricardo.sousa\Desktop\Receita\Fiap.Project.Recipes.Web\obj\Debug\net5.0\Project.Recipes.Web.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\ricardo.sousa\Desktop\Receita\Fiap.Project.Recipes.Web\obj\Debug\net5.0\Project.Recipes.Web.RazorAssemblyInfo.cache
+C:\Users\ricardo.sousa\Desktop\Receita\Fiap.Project.Recipes.Web\obj\Debug\net5.0\Project.Recipes.Web.RazorAssemblyInfo.cs

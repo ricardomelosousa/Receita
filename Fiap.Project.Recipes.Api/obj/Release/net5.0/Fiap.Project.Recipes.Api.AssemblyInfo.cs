@@ -11,6 +11,7 @@
 using System;
 using System.Reflection;
 
+[assembly: Microsoft.Extensions.Configuration.UserSecrets.UserSecretsIdAttribute("d75cc442-5db8-43c8-a7db-5089aea79e02")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("Fiap.Project.Recipes.Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]

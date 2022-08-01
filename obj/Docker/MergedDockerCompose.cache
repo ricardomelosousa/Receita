@@ -1,12 +1,17 @@
 services:
-  fiap.project.recipes.api:
+  Project.Recipes.Web:
     build:
       context: C:\Users\ricardo.sousa\Desktop\Receita
-      dockerfile: Fiap.Project.Recipes.Api/Dockerfile
+      dockerfile: Project.Recipes.Web/Dockerfile
+    image: projectrecipesweb
+  Project.Recipes.api:
+    build:
+      context: C:\Users\ricardo.sousa\Desktop\Receita
+      dockerfile: Project.Recipes.Api/Dockerfile
     environment:
       ASPNETCORE_ENVIRONMENT: Development
       ASPNETCORE_URLS: https://+:443;http://+:80
-    image: fiapprojectrecipesapi
+    image: projectrecipesapi
     ports:
     - target: 80
     - target: 443

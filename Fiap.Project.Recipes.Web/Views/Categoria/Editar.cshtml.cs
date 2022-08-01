@@ -1,23 +1,20 @@
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using Project.Recipes.Web.Helpers;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Security.Claims;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
-using Fiap.Project.Recipes.Web.Helpers;
-using Fiap.Project.Recipes.Web.Model;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace Fiap.Project.Recipes.Web.Views.Category
+namespace Project.Recipes.Web.Views.Category
 {
     public class EditarModel : PageModel
     {
         [BindProperty()]
-        public Fiap.Project.Recipes.Domain.Models.Category Categor { get; set; }
+        public Project.Recipes.Domain.Models.Category Categor { get; set; }
         public async Task<IActionResult> OnGetAsync(int? id)
         {
             if (id == null)

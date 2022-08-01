@@ -1,32 +1,31 @@
-using Fiap.Project.Recipes.Api.Controllers;
-using Fiap.Project.Recipes.Application.Interfaces;
-using Fiap.Project.Recipes.Domain.Models;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
-using System.Threading.Tasks;
+using Project.Recipes.Api.Controllers;
+using Project.Recipes.Application.Interfaces;
+using Project.Recipes.Domain.Models;
 using Xunit;
 
-namespace Fiap.Project.Recipes.Api.Test
+namespace Project.Recipes.Api.Test
 {
     public class CategoryControllerTest
     {
-        private readonly Mock<ICategoryService> _CategoryServiceMock;
+        private readonly Mock<ICategoryAppService> _CategoryServiceMock;
 
         public CategoryControllerTest()
         {
-            _CategoryServiceMock = new Mock<ICategoryService>();
+            _CategoryServiceMock = new Mock<ICategoryAppService>();
         }
 
         [Fact]
-        public void Get_Category_Por_Id()
+        public async void Get_Category_Por_Id()
         {
             //Arrange
             int CategoryId = 2;
             var Category = new Category() { Id = 2, Descricao = "As melhores sobremesas", Titulo = "Sobremesas" };
-            _CategoryServiceMock.Setup(x => x.Get(It.IsAny<int>())).Returns(Category);
+            _CategoryServiceMock.Setup(x => x.GetById(It.IsAny<int>())).ReturnsAsync(Category);
             //Act
             var CategoryController = new CategoriesController(_CategoryServiceMock.Object);
-            var actionResult = CategoryController.Get(CategoryId);
+            var actionResult = await CategoryController.Get(CategoryId);
 
             //Assert      
             Assert.Equal(actionResult.Value.Id, CategoryId);
@@ -39,7 +38,7 @@ namespace Fiap.Project.Recipes.Api.Test
             //Arrange
             int CategoryId = 2;
             var Category = new Category() { Id = 2, Descricao = "As melhores sobremesas", Titulo = "Sobremesas" };
-            _CategoryServiceMock.Setup(x => x.Insert(It.IsAny<Category>()));
+            _CategoryServiceMock.Setup(x => x.Add(It.IsAny<Category>()));
             //Act
             var CategoryController = new CategoriesController(_CategoryServiceMock.Object);
             var actionResult = CategoryController.Insert(Category);
@@ -50,16 +49,16 @@ namespace Fiap.Project.Recipes.Api.Test
         }
 
         [Fact]
-        public void Test_Delete_Category()
+        public async void Test_Delete_Category()
         {
             //Arrange
             int CategoryId = 2;
             var Category = new Category() { Id = 2, Descricao = "As melhores sobremesas", Titulo = "Sobremesas" };
-            _CategoryServiceMock.Setup(x => x.Get(It.IsAny<int>())).Returns(Category);
+            _CategoryServiceMock.Setup(x => x.GetById(It.IsAny<int>())).ReturnsAsync(Category);
             //Act
             var CategoryController = new CategoriesController(_CategoryServiceMock.Object);
             var actionResult = CategoryController.Get(CategoryId);
-            var actionResultDelete = CategoryController.Delete(CategoryId);
+            var actionResultDelete = await CategoryController.Delete(CategoryId);
             //Assert          
             Assert.Equal(((NoContentResult)actionResultDelete).StatusCode, (int)System.Net.HttpStatusCode.NoContent);
         }
@@ -69,7 +68,7 @@ namespace Fiap.Project.Recipes.Api.Test
         {
             //Arrange
             var Category = new Category() { Id = 2, Descricao = "As melhores sobremesas do mundo", Titulo = "Sobremesas" };
-            _CategoryServiceMock.Setup(x => x.Get(It.IsAny<int>())).Returns(Category);
+            _CategoryServiceMock.Setup(x => x.GetById(It.IsAny<int>())).ReturnsAsync(Category);
             //Act
             var CategoryController = new CategoriesController(_CategoryServiceMock.Object);
             var actionResult = CategoryController.Update(Category);

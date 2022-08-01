@@ -1,13 +1,13 @@
-﻿using Fiap.Project.Recipes.Application.Interfaces;
-using Fiap.Project.Recipes.Domain.Models;
-using Fiap.Project.Recipes.Persistence.Contexts;
+﻿using Project.Recipes.Domain.Interface.Repository;
+using Project.Recipes.Domain.Interface.Repository.Base;
+using Project.Recipes.Domain.Models;
+using Project.Recipes.Persistence.Contexts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace Fiap.Project.Recipes.Persistence.Repositories
+namespace Project.Recipes.Persistence.Repositories
 {
     public class CategoryRepository : ICategoryRepository
     {
@@ -49,6 +49,46 @@ namespace Fiap.Project.Recipes.Persistence.Repositories
         public IEnumerable<Category> GetAll()
         {
             return _dataContext.Categorys.ToList();
+        }
+
+        public Task<int> Add(Category obj)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<Category> GetById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<Category> FindBy(Func<Category, bool> predicate, bool @readonly)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<IQueryable<Category>> IRepositoryBase<Category>.GetAll()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Remove(Category id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<int> SaveChanges()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Dispose()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<IQueryable<Category>> GetAllByParamenter(Func<Category, bool> predicate, bool @readonly)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -1,7 +1,6 @@
-using Fiap.Project.Recipes.Web.Helpers;
-using Fiap.Project.Recipes.Web.Model;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Project.Recipes.Web.Helpers;
 using System;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -10,7 +9,7 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace Fiap.Project.Recipes.Web.Views.Category
+namespace Project.Recipes.Web.Views.Category
 {
     public class DeleteModel : PageModel
     {

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Fiap.Project.Recipes.Api.Model
+namespace Project.Recipes.Api.Model
 {
     public class AuthenticateRequest
     {
@@ -8,6 +8,6 @@ namespace Fiap.Project.Recipes.Api.Model
         public string Login { get; set; }
 
         [Required]
-        public string Senha { get; set; }
+        public string Password { get; set; }
     }
 }

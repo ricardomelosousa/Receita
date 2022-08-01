@@ -1,6 +1,6 @@
 using Xunit;
 
-namespace Fiap.Project.Recipes.Application.Test
+namespace Project.Recipes.Application.Test
 {
     public class UnitTest1
     {

@@ -15,7 +15,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "Fiap.Project.Recipes.Web": {
+    "Project.Recipes.Web": {
       "commandName": "Project",
       "launchBrowser": true,
       "environmentVariables": {

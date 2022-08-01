@@ -7,19 +7,19 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 WORKDIR /src
-COPY ["Fiap.Project.Recipes.Api/Fiap.Project.Recipes.Api.csproj", "Fiap.Project.Recipes.Api/"]
-COPY ["Fiap.Project.Recipes.Application/Fiap.Project.Recipes.Application.csproj", "Fiap.Project.Recipes.Application/"]
-COPY ["Fiap.Project.Recipes.Domain/Fiap.Project.Recipes.Domain.csproj", "Fiap.Project.Recipes.Domain/"]
-COPY ["Fiap.Project.Recipes.Persistence/Fiap.Project.Recipes.Persistence.csproj", "Fiap.Project.Recipes.Persistence/"]
-RUN dotnet restore "Fiap.Project.Recipes.Api/Fiap.Project.Recipes.Api.csproj"
+COPY ["Project.Recipes.Api/Project.Recipes.Api.csproj", "Project.Recipes.Api/"]
+COPY ["Project.Recipes.Application/Project.Recipes.Application.csproj", "Project.Recipes.Application/"]
+COPY ["Project.Recipes.Domain/Project.Recipes.Domain.csproj", "Project.Recipes.Domain/"]
+COPY ["Project.Recipes.Persistence/Project.Recipes.Persistence.csproj", "Project.Recipes.Persistence/"]
+RUN dotnet restore "Project.Recipes.Api/Project.Recipes.Api.csproj"
 COPY . .
-WORKDIR "/src/Fiap.Project.Recipes.Api"
-RUN dotnet build "Fiap.Project.Recipes.Api.csproj" -c Release -o /app/build
+WORKDIR "/src/Project.Recipes.Api"
+RUN dotnet build "Project.Recipes.Api.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "Fiap.Project.Recipes.Api.csproj" -c Release -o /app/publish
+RUN dotnet publish "Project.Recipes.Api.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "Fiap.Project.Recipes.Api.dll"]
+ENTRYPOINT ["dotnet", "Project.Recipes.Api.dll"]

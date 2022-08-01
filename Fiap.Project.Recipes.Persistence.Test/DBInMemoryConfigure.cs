@@ -1,7 +1,7 @@
-﻿using Fiap.Project.Recipes.Persistence.Contexts;
+﻿using Project.Recipes.Persistence.Contexts;
 using Microsoft.EntityFrameworkCore;
 
-namespace Fiap.Project.Recipes.Persistence.Test
+namespace Project.Recipes.Persistence.Test
 {
     public static class DBInMemoryConfigure
     {

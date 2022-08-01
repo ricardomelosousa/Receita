@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace Fiap.Project.Recipes.Persistence.Migrations
+namespace Project.Recipes.Persistence.Migrations
 {
     public partial class InitialSeed : Migration
     {
@@ -28,8 +28,8 @@ namespace Fiap.Project.Recipes.Persistence.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Login = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Senha = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Nome = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Password = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Role = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
@@ -78,7 +78,7 @@ namespace Fiap.Project.Recipes.Persistence.Migrations
 
             migrationBuilder.InsertData(
                 table: "Users",
-                columns: new[] { "Id", "Email", "Login", "Nome", "Role", "Senha" },
+                columns: new[] { "Id", "Email", "Login", "Name", "Role", "Password" },
                 values: new object[] { 1, "admin@admin", "admin", "Administrador", "Administrador", "123456" });
 
             migrationBuilder.InsertData(

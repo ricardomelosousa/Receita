@@ -1,13 +1,11 @@
-using Fiap.Project.Recipes.Application.Middleware;
-using Fiap.Project.Recipes.Persistence.Contexts;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Project.Recipes.Application.Middleware;
 
-namespace Fiap.Project.Recipes.Web
+namespace Project.Recipes.Web
 {
     public class Startup
     {

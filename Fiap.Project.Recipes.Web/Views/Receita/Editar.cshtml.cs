@@ -1,6 +1,6 @@
-using Fiap.Project.Recipes.Web.Helpers;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Project.Recipes.Web.Helpers;
 using System;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -9,12 +9,12 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace Fiap.Project.Recipes.Web.Views.Recipe
+namespace Project.Recipes.Web.Views.Recipe
 {
     public class EditarModel : PageModel
     {
         [BindProperty()]
-        public Fiap.Project.Recipes.Domain.Models.Recipe Recipe { get; set; }
+        public Project.Recipes.Domain.Models.Recipe Recipe { get; set; }
         public IActionResult OnGet(int? id)
         {
             if (id == null)

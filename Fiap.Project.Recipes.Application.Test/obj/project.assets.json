@@ -5912,9 +5912,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ricardo.sousa\\Desktop\\Receita\\Fiap.Project.Recipes.Application.Test\\Fiap.Project.Recipes.Application.Test.csproj",
-      "projectName": "Fiap.Project.Recipes.Application.Test",
-      "projectPath": "C:\\Users\\ricardo.sousa\\Desktop\\Receita\\Fiap.Project.Recipes.Application.Test\\Fiap.Project.Recipes.Application.Test.csproj",
+      "projectUniqueName": "C:\\Users\\ricardo.sousa\\Desktop\\Receita\\Fiap.Project.Recipes.Application.Test\\Project.Recipes.Application.Test.csproj",
+      "projectName": "Project.Recipes.Application.Test",
+      "projectPath": "C:\\Users\\ricardo.sousa\\Desktop\\Receita\\Fiap.Project.Recipes.Application.Test\\Project.Recipes.Application.Test.csproj",
       "packagesPath": "C:\\Users\\ricardo.sousa\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\ricardo.sousa\\Desktop\\Receita\\Fiap.Project.Recipes.Application.Test\\obj\\",
       "projectStyle": "PackageReference",

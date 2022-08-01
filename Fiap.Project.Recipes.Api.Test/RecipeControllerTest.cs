@@ -1,33 +1,33 @@
-using Fiap.Project.Recipes.Api.Controllers;
-using Fiap.Project.Recipes.Application.Interfaces;
-using Fiap.Project.Recipes.Domain.Models;
+using Project.Recipes.Api.Controllers;
+using Project.Recipes.Application.Interfaces;
+using Project.Recipes.Domain.Models;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
 using Xunit;
 
-namespace Fiap.Project.Recipes.Api.Test
+namespace Project.Recipes.Api.Test
 {
     public class RecipeControllerTest
     {
-        private readonly Mock<IRecipeService> _RecipeServiceMock;
+        private readonly Mock<IRecipeAppService> _RecipeServiceMock;
 
         public RecipeControllerTest()
         {
-            _RecipeServiceMock = new Mock<IRecipeService>();
+            _RecipeServiceMock = new Mock<IRecipeAppService>();
         }
 
         [Fact]
-        public void Test_Get_Recipe_Por_Id()
+        public async void Test_Get_Recipe_Por_Id()
         {
             //Arrange
             int RecipeId = 1;
             var Recipe = new Recipe() { Id = 1, Descricao = "Pudim", Titulo = "Sobremesas", Ingredientes = "Uma lata de leite conden...", Preparo = "Leve ao forno", CategoryId = 2 };
-            _RecipeServiceMock.Setup(x => x.Get(It.IsAny<int>())).Returns(Recipe);
+            _RecipeServiceMock.Setup(x => x.GetById(It.IsAny<int>())).ReturnsAsync(Recipe);
             //Act
             var RecipeController = new RecipesController(_RecipeServiceMock.Object);
-            var actionResult = RecipeController.Get(RecipeId);
+            var actionResult = await RecipeController.Get(RecipeId);
             //Assert      
-            Assert.Equal(actionResult.Value.Id, RecipeId);
+            Assert.Equal(actionResult.Value?.Id, RecipeId);
 
         }
 
@@ -37,10 +37,10 @@ namespace Fiap.Project.Recipes.Api.Test
             //Arrange
             int RecipeId = 1;
             var Recipe = new Recipe() { Id = 1, Descricao = "Pudim", Titulo = "Sobremesas", Ingredientes = "Uma lata de leite conden...", Preparo = "Leve ao forno", CategoryId = 2 };
-            _RecipeServiceMock.Setup(x => x.Insert(It.IsAny<Recipe>()));
+            _RecipeServiceMock.Setup(x => x.Add(It.IsAny<Recipe>()));
             //Act
             var RecipeController = new RecipesController(_RecipeServiceMock.Object);
-            var actionResult = RecipeController.Insert(Recipe);
+            var actionResult =  RecipeController.Insert(Recipe);
 
             //Assert          
             Assert.Equal(((ObjectResult)actionResult.Result).StatusCode, (int)System.Net.HttpStatusCode.Created);
@@ -48,16 +48,16 @@ namespace Fiap.Project.Recipes.Api.Test
         }
 
         [Fact]
-        public void Test_Delete_Recipe()
+        public async void Test_Delete_Recipe()
         {
             //Arrange
-            int RecipeId = 1;
-            var Recipe = new Recipe() { Id = 1, Descricao = "Pudim", Titulo = "Sobremesas", Ingredientes = "Uma lata de leite conden...", Preparo = "Leve ao forno", CategoryId = 2 };
-            _RecipeServiceMock.Setup(x => x.Get(It.IsAny<int>())).Returns(Recipe);
+            int recipeId = 1;
+            var recipe = new Recipe() { Id = 1, Descricao = "Pudim", Titulo = "Sobremesas", Ingredientes = "Uma lata de leite conden...", Preparo = "Leve ao forno", CategoryId = 2 };
+            _RecipeServiceMock.Setup(x => x.GetById(It.IsAny<int>())).ReturnsAsync(recipe);
             //Act
             var RecipeController = new RecipesController(_RecipeServiceMock.Object);
-            var actionResult = RecipeController.Get(RecipeId);
-            var actionResultDelete = RecipeController.Delete(RecipeId);
+            var actionResult = RecipeController.Get(recipeId);
+            var actionResultDelete = await RecipeController.Delete(recipeId);
             //Assert          
             Assert.Equal(((NoContentResult)actionResultDelete).StatusCode, (int)System.Net.HttpStatusCode.NoContent);
         }
@@ -66,12 +66,12 @@ namespace Fiap.Project.Recipes.Api.Test
         public void Test_Update_Recipe()
         {
             //Arrange
-            int RecipeId = 1;
-            var Recipe = new Recipe() { Id = 1, Descricao = "Pudim", Titulo = "Sobremesas", Ingredientes = "Uma lata de leite conden...", Preparo = "Leve ao forno", CategoryId = 2 };
-            _RecipeServiceMock.Setup(x => x.Get(It.IsAny<int>())).Returns(Recipe);
+            int recipeId = 1;
+            var recipe = new Recipe() { Id = 1, Descricao = "Pudim", Titulo = "Sobremesas", Ingredientes = "Uma lata de leite conden...", Preparo = "Leve ao forno", CategoryId = 2 };
+            _RecipeServiceMock.Setup(x => x.GetById(It.IsAny<int>())).ReturnsAsync(recipe);
             //Act
             var RecipeController = new RecipesController(_RecipeServiceMock.Object);
-            var actionResult = RecipeController.Update(Recipe);
+            var actionResult = RecipeController.Update(recipe);
             //Assert          
             Assert.Equal(((ObjectResult)actionResult.Result).StatusCode, (int)System.Net.HttpStatusCode.OK);
         }

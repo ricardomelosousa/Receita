@@ -6,7 +6,7 @@ using System.Collections.ObjectModel;
 using System.Security.Claims;
 using System.Threading;
 
-namespace Fiap.Project.Recipes.Web.Helpers
+namespace Project.Recipes.Web.Helpers
 {
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
     public class AuthorizeAttribute : Attribute, IAuthorizationFilter

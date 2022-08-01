@@ -1,7 +1,7 @@
 {
   "version": 3,
   "targets": {
-    "net5.0": {
+    "net6.0": {
       "Microsoft.AspNetCore.Http.Abstractions/2.2.0": {
         "type": "package",
         "dependencies": {
@@ -279,14 +279,14 @@
           "lib/netstandard2.0/System.Text.Encodings.Web.dll": {}
         }
       },
-      "Fiap.Project.Recipes.Domain/1.0.0": {
+      "Project.Recipes.Domain/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v5.0",
+        "framework": ".NETCoreApp,Version=v6.0",
         "compile": {
-          "bin/placeholder/Fiap.Project.Recipes.Domain.dll": {}
+          "bin/placeholder/Project.Recipes.Domain.dll": {}
         },
         "runtime": {
-          "bin/placeholder/Fiap.Project.Recipes.Domain.dll": {}
+          "bin/placeholder/Project.Recipes.Domain.dll": {}
         }
       }
     }
@@ -920,18 +920,18 @@
         "version.txt"
       ]
     },
-    "Fiap.Project.Recipes.Domain/1.0.0": {
+    "Project.Recipes.Domain/1.0.0": {
       "type": "project",
-      "path": "../Fiap.Project.Recipes.Domain/Fiap.Project.Recipes.Domain.csproj",
-      "msbuildProject": "../Fiap.Project.Recipes.Domain/Fiap.Project.Recipes.Domain.csproj"
+      "path": "../Fiap.Project.Recipes.Domain/Project.Recipes.Domain.csproj",
+      "msbuildProject": "../Fiap.Project.Recipes.Domain/Project.Recipes.Domain.csproj"
     }
   },
   "projectFileDependencyGroups": {
-    "net5.0": [
-      "Fiap.Project.Recipes.Domain >= 1.0.0",
+    "net6.0": [
       "Microsoft.AspNetCore.Http.Abstractions >= 2.2.0",
       "Microsoft.EntityFrameworkCore >= 5.0.11",
       "Microsoft.Extensions.Configuration.Abstractions >= 5.0.0",
+      "Project.Recipes.Domain >= 1.0.0",
       "System.IdentityModel.Tokens.Jwt >= 6.14.0"
     ]
   },
@@ -942,9 +942,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ricardo.sousa\\Desktop\\Receita\\Fiap.Project.Recipes.Application\\Fiap.Project.Recipes.Application.csproj",
-      "projectName": "Fiap.Project.Recipes.Application",
-      "projectPath": "C:\\Users\\ricardo.sousa\\Desktop\\Receita\\Fiap.Project.Recipes.Application\\Fiap.Project.Recipes.Application.csproj",
+      "projectUniqueName": "C:\\Users\\ricardo.sousa\\Desktop\\Receita\\Fiap.Project.Recipes.Application\\Project.Recipes.Application.csproj",
+      "projectName": "Project.Recipes.Application",
+      "projectPath": "C:\\Users\\ricardo.sousa\\Desktop\\Receita\\Fiap.Project.Recipes.Application\\Project.Recipes.Application.csproj",
       "packagesPath": "C:\\Users\\ricardo.sousa\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\ricardo.sousa\\Desktop\\Receita\\Fiap.Project.Recipes.Application\\obj\\",
       "projectStyle": "PackageReference",
@@ -956,7 +956,7 @@
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
-        "net5.0"
+        "net6.0"
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
@@ -964,11 +964,11 @@
         "https://www.p3store.com.br:443/P3NuGet/nuget": {}
       },
       "frameworks": {
-        "net5.0": {
-          "targetAlias": "net5.0",
+        "net6.0": {
+          "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\ricardo.sousa\\Desktop\\Receita\\Fiap.Project.Recipes.Domain\\Fiap.Project.Recipes.Domain.csproj": {
-              "projectPath": "C:\\Users\\ricardo.sousa\\Desktop\\Receita\\Fiap.Project.Recipes.Domain\\Fiap.Project.Recipes.Domain.csproj"
+            "C:\\Users\\ricardo.sousa\\Desktop\\Receita\\Fiap.Project.Recipes.Domain\\Project.Recipes.Domain.csproj": {
+              "projectPath": "C:\\Users\\ricardo.sousa\\Desktop\\Receita\\Fiap.Project.Recipes.Domain\\Project.Recipes.Domain.csproj"
             }
           }
         }
@@ -980,8 +980,8 @@
       }
     },
     "frameworks": {
-      "net5.0": {
-        "targetAlias": "net5.0",
+      "net6.0": {
+        "targetAlias": "net6.0",
         "dependencies": {
           "Microsoft.AspNetCore.Http.Abstractions": {
             "target": "Package",

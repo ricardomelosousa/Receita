@@ -1,20 +1,11 @@
-using Fiap.Project.Recipes.Api.Helpers;
-using Fiap.Project.Recipes.Application.Interfaces;
-using Fiap.Project.Recipes.Application.Middleware;
-using Fiap.Project.Recipes.Application.Services;
-using Fiap.Project.Recipes.Persistence.Contexts;
-using Fiap.Project.Recipes.Persistence.Repositories;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.ResponseCompression;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using Microsoft.OpenApi.Models;
-using Swashbuckle.AspNetCore.Filters;
+using Microsoft.Extensions.Logging;
+using Project.Recipes.EventBus;
+using Project.Recipes.EventBus.Base;
+using Project.Recipes.EventBus.RabbitMQ;
+using RabbitMQ.Client;
+using System;
 
-namespace Fiap.Project.Recipes.Api
+namespace Project.Recipes.Api
 {
     public class Startup
     {
@@ -35,14 +26,14 @@ namespace Fiap.Project.Recipes.Api
                 {
                     builder.AllowAnyOrigin()
                             .AllowAnyHeader()
-                            .AllowAnyMethod(); ;
+                            .AllowAnyMethod(); 
                 });
             });
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Fiap.Project.Recipes.Api", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Project.Recipes.Api", Version = "v1" });
                 var jwtSecurityScheme = new OpenApiSecurityScheme
                 {
                     Scheme = "bearer",
@@ -70,12 +61,17 @@ namespace Fiap.Project.Recipes.Api
             });
 
             // configure DI for application services
-            services.AddScoped<IUserService, UserService>();
-            services.AddScoped<IUserRepository, UserRepository>();
-            services.AddScoped<IRecipeService, RecipeService>();
-            services.AddScoped<IRecipeRepository, RecipeRepository>();
+            services.AddScoped<IUserService, UserService>();           
+            services.AddScoped<IRecipeService, RecipeService>();            
             services.AddScoped<ICategoryService, CategoryService>();
+
             services.AddScoped<ICategoryRepository, CategoryRepository>();
+            services.AddScoped<IRecipeRepository, RecipeRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
+
+            services.AddScoped<ICategoryAppService, CategoryAppService>();
+            services.AddScoped<IRecipeAppService, RecipeAppService>();
+            services.AddScoped<IUserAppService, UserAppService>();
 
             var conSqlServer = Configuration["ConnectionStringSql"];
             services.AddDbContext<SqlDataContext>(options => options.UseSqlServer(conSqlServer));
@@ -87,6 +83,49 @@ namespace Fiap.Project.Recipes.Api
                 o.Providers.Add<GzipCompressionProvider>();
             });
 
+
+            if (Configuration.GetValue<bool>("AzureServiceBusEnabled"))
+            {
+                services.AddSingleton<IServiceBusConnection>(sp =>
+                {
+                    var serviceBusConnectionString = Configuration["EventBusConnection"];
+
+                    return new DefaultServiceBusConnection(serviceBusConnectionString);
+                });
+            }
+            else
+            {
+                services.AddSingleton<IRabbitMQConnection>(sp =>
+                {
+                    var logger = sp.GetRequiredService<ILogger<DefaultRabbitMQConnection>>();
+                    var factory = new ConnectionFactory()
+                    {
+                        HostName = Configuration["HostName"],
+                        DispatchConsumersAsync = true,
+                        Uri = new Uri(Configuration["EventBusConnection"])
+                    };
+
+                    if (!string.IsNullOrEmpty(Configuration["EventBusUserName"]))
+                    {
+                        factory.UserName = Configuration["EventBusUserName"];
+                    }
+
+                    if (!string.IsNullOrEmpty(Configuration["EventBusPassword"]))
+                    {
+                        factory.Password = Configuration["EventBusPassword"];
+                    }
+
+                    var retryCount = 5;
+                    if (!string.IsNullOrEmpty(Configuration["EventBusRetryCount"]))
+                    {
+                        retryCount = int.Parse(Configuration["EventBusRetryCount"]);
+                    }
+
+                    return new DefaultRabbitMQConnection(factory, logger, retryCount);
+                });
+
+            }
+            RegisterEventBus(services);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -96,7 +135,7 @@ namespace Fiap.Project.Recipes.Api
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Fiap.Project.Recipes.Api v1"));
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Project.Recipes.Api v1"));
             }
 
             app.UseHttpsRedirection();
@@ -111,6 +150,46 @@ namespace Fiap.Project.Recipes.Api
                 endpoints.MapControllers();
             });
 
+        }
+
+        private void RegisterEventBus(IServiceCollection services)
+        {
+            if (Configuration.GetValue<bool>("AzureServiceBusEnabled"))
+            {
+                services.AddSingleton<IEventBus, EventBusServiceBus>(sp =>
+                {
+                    var serviceBusPersisterConnection = sp.GetRequiredService<IServiceBusPersisterConnection>();
+                    var iLifetimeScope = sp.GetRequiredService<ILifetimeScope>();
+                    var logger = sp.GetRequiredService<ILogger<EventBusServiceBus>>();
+                    var eventBusSubcriptionsManager = sp.GetRequiredService<IEventBusSubscriptionsManager>();
+                    string subscriptionName = Configuration["SubscriptionClientName"];
+
+                    return new EventBusServiceBus(serviceBusPersisterConnection, logger,
+                        eventBusSubcriptionsManager, iLifetimeScope, subscriptionName);
+                });
+            }
+            else
+            {
+                services.AddSingleton<IEventBus, EventBusRabbitMQ>(sp =>
+                {
+                    var subscriptionClientName = Configuration["SubscriptionClientName"];
+                    var rabbitMQPersistentConnection = sp.GetRequiredService<IRabbitMQPersistentConnection>();
+                    var iLifetimeScope = sp.GetRequiredService<ILifetimeScope>();
+                    var logger = sp.GetRequiredService<ILogger<EventBusRabbitMQ>>();
+                    var eventBusSubcriptionsManager = sp.GetRequiredService<IEventBusSubscriptionsManager>();
+
+                    var retryCount = 5;
+                    if (!string.IsNullOrEmpty(Configuration["EventBusRetryCount"]))
+                    {
+                        retryCount = int.Parse(Configuration["EventBusRetryCount"]);
+                    }
+
+                    return new EventBusRabbitMQ(rabbitMQPersistentConnection, logger, iLifetimeScope, eventBusSubcriptionsManager, subscriptionClientName, retryCount);
+                });
+            }
+
+            services.AddTransient<RecipeEventHandler>();
+            services.AddSingleton<IEventBusSubscriptionsManager, InMemoryEventBusSubscriptionsManager>();
         }
     }
 }

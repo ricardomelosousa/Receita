@@ -1,58 +1,50 @@
-﻿using Fiap.Project.Recipes.Api.Helpers;
-using Fiap.Project.Recipes.Application.Interfaces;
-using Fiap.Project.Recipes.Domain.Models;
-using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿
 
-namespace Fiap.Project.Recipes.Api.Controllers
+namespace Project.Recipes.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
     public class CategoriesController : ControllerBase
     {
-        private readonly ICategoryService _CategoryService;
+        private readonly ICategoryAppService _categoryService;
 
-        public CategoriesController(ICategoryService service)
+        public CategoriesController(ICategoryAppService service)
         {
-            _CategoryService = service;
+            _categoryService = service;
         }
 
-
-      
         [HttpGet]
         [Route("{id}")]
-        public ActionResult<Category> Get(int? id)
+        public async Task<ActionResult<Category>> Get(int? id)
         {
             if (id == null)
                 return NotFound();
 
-            var Category = _CategoryService.Get(id.Value);
+            var category = await _categoryService.GetById(id.Value);
 
-            if (Category == null)
+            if (category == null)
                 return NotFound();
 
-            return Category;
+            return category;
         }
 
 
-      
+
         [HttpGet]
-        public ActionResult<IEnumerable<Category>> GetAll()
+        public async Task<ActionResult<IEnumerable<Category>>> GetAllAsync()
         {
-            return Ok(_CategoryService.GetAll().ToList());
+            return Ok(await _categoryService.GetAll());
         }
 
 
         [Authorize]
         [HttpPost]
-        public ActionResult<Category> Insert([FromBody]Category Category)
+        public ActionResult<Category> Insert([FromBody] Category Category)
         {
             if (Category == null)
                 return BadRequest();
 
-            _CategoryService.Insert(Category);
+            _categoryService.Add(Category);
 
             return Created($"/api/Category/{Category.Id}", Category);
         }
@@ -61,14 +53,12 @@ namespace Fiap.Project.Recipes.Api.Controllers
         [Authorize]
         [HttpDelete]
         [Route("{id}")]
-        public ActionResult Delete(int id)
+        public async Task<ActionResult> Delete(int id)
         {
-            var catagoria = _CategoryService.Get(id);
-
-            if (catagoria == null)
+            var category = await _categoryService.GetById(id);
+            if (category == null)
                 return NotFound();
-            
-            _CategoryService.Delete(id);
+            _categoryService.Remove(category);
             return NoContent();
         }
 
@@ -79,7 +69,7 @@ namespace Fiap.Project.Recipes.Api.Controllers
         {
             if (ModelState.IsValid)
             {
-                _CategoryService.Update(Category);
+                _categoryService.Update(Category);
                 return Ok(Category);
             }
 

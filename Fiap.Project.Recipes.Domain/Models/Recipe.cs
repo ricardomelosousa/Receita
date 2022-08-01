@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Fiap.Project.Recipes.Domain.Models
+namespace Project.Recipes.Domain.Models
 {
     public class Recipe
     {
@@ -22,6 +18,22 @@ namespace Fiap.Project.Recipes.Domain.Models
         public int CategoryId { get; set; }
         public virtual Category CategoryRecipe { get; set; }
         public DateTime DataInclusao { get; set; }
+
+
+        public void RecipeHaveContainIngredientsForCategory()
+        {
+            if (string.IsNullOrEmpty(Ingredientes) || CategoryId == 0)
+            {
+                throw new BusinessRuleException("Informe os ingredientes corretos da receita.");
+            }
+
+        }
+        public void RecipeHaveContainIngredients() 
+        {
+            if (string.IsNullOrEmpty(Ingredientes))
+                throw new BusinessRuleException("Informe os ingredientes da receita.");
+        
+        }
 
     }
 }
