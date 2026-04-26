@@ -1,5 +1,5 @@
 # Receita
-Esse projeto tem como finalidade a criação de uma portal de receitas para treinamento de novas tecnologias lançadas, sempre tentaremos atualizar o sistema com alguma nova 
+Esse projeto tem como finalidade a criação de um portal de receitas para treinamento de novas tecnologias lançadas, sempre tentaremos atualizar o sistema com alguma nova 
 tecnologia ou afins no nosso projeto.
 
 <b>O que temos até o momento no nosso projeto :</b>
